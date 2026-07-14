@@ -1,57 +1,232 @@
-/* A clean, minimal starting point. It's deliberately plain — your prompts will
-   shape how the site actually looks. Edit freely (or just ask the AI to). */
+/* ── Reset & base ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink: #1f2937;
-  --muted: #6b7280;
-  --accent: #2563eb;
-  --bg: #ffffff;
+  --navy:   #1a2b4a;
+  --gold:   #8a6e3e;
+  --cream:  #faf8f4;
+  --muted:  #6b7280;
+  --border: #e5e0d8;
+  --white:  #ffffff;
+  --max:    860px;
 }
 
-* {
-  box-sizing: border-box;
-}
+html { scroll-behavior: smooth; }
 
-html,
 body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--cream);
+  color: var(--navy);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.shell {
-  max-width: 640px;
+/* ── Typography ────────────────────────────────────────── */
+h1, h2, h3 {
+  font-family: Georgia, serif;
+  line-height: 1.2;
+}
+
+p { line-height: 1.75; }
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Nav ───────────────────────────────────────────────── */
+header {
+  background: var(--navy);
+  color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  max-width: var(--max);
   margin: 0 auto;
-  padding: 18vh 24px 24px;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
 }
 
-.tag {
+.nav-brand {
+  font-size: 1.05rem;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+  color: var(--white);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--accent);
-  margin: 0 0 12px;
+  transition: color 0.15s;
 }
 
-h1 {
-  font-size: 44px;
-  line-height: 1.1;
-  margin: 0 0 16px;
+.nav-links a:hover,
+.nav-links a.active { color: var(--white); text-decoration: none; }
+
+/* ── Main wrapper ──────────────────────────────────────── */
+main {
+  flex: 1;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+  width: 100%;
 }
 
-.lead {
-  font-size: 18px;
-  color: var(--ink);
-  margin: 0 0 20px;
+/* ── Hero / Home ───────────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-bottom: 3.5rem;
 }
 
-.hint {
-  font-size: 15px;
+.hero-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--white);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+}
+
+.hero-text h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.3rem;
+  color: var(--navy);
+}
+
+.tagline {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+.bio p + p { margin-top: 1.1rem; }
+
+/* ── Section heading ───────────────────────────────────── */
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border);
+}
+
+/* ── Publications ──────────────────────────────────────── */
+.pub-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.pub-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.pub-body h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.pub-body .pub-meta {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
   color: var(--muted);
-  border-top: 1px solid #e5e7eb;
-  padding-top: 16px;
+  margin-bottom: 0.75rem;
+}
+
+.pub-body p {
+  font-size: 0.97rem;
+  color: #374151;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.55rem 1.25rem;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn-primary:hover { background: #243660; text-decoration: none; }
+
+.btn-outline {
+  border: 2px solid var(--navy);
+  color: var(--navy);
+  background: transparent;
+}
+.btn-outline:hover { background: var(--navy); color: var(--white); text-decoration: none; }
+
+/* ── Footer ────────────────────────────────────────────── */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.65);
+  padding: 1.75rem 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+}
+
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+footer a { color: rgba(255,255,255,0.85); }
+footer a:hover { color: var(--white); }
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .hero-photo { margin: 0 auto; }
+  .pub-card { flex-direction: column; }
+  .footer-inner { flex-direction: column; text-align: center; }
 }
