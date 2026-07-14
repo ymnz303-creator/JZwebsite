@@ -197,6 +197,62 @@ main {
 }
 .btn-outline:hover { background: var(--navy); color: var(--white); text-decoration: none; }
 
+/* ── Article cards ─────────────────────────────────────── */
+.article-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.article-venue {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.article-title {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.article-title a {
+  color: var(--navy);
+}
+.article-title a:hover { color: var(--gold); text-decoration: none; }
+
+.article-desc {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.article-link {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+  align-self: center;
+  flex-shrink: 0;
+}
+.article-link:hover { color: var(--navy); text-decoration: none; }
+
+@media (max-width: 600px) {
+  .article-card { flex-direction: column; gap: 0.75rem; }
+  .article-link { align-self: flex-start; }
+}
+
 /* ── Footer ────────────────────────────────────────────── */
 footer {
   background: var(--navy);
